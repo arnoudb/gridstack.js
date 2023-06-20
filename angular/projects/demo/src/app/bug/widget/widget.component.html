@@ -1,0 +1,9 @@
+<div class="container">
+  <p *ngIf="widget?.type === 'text'; else notfound"><span>{{widget?.value}}</span></p>
+  <ng-template #notfound>
+    <span>widget not found!</span>
+  </ng-template>
+  <div class="error-message-container">
+    <span class="error-message">this is the error, this item is not resizable anymore and has a width of the whole grid</span>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.container {
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  container-type: inline-size;
+
+  @container (width > 600px) {
+    .error-message-container {
+      display: block;
+      background: red;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0
+    }
+  }
+}
+
+.error-message-container > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error-message-container {
+  display: none;
+}
+
+
+

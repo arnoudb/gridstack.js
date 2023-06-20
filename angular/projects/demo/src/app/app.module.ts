@@ -11,6 +11,9 @@ import { AComponent, BComponent, CComponent } from './dummy.component';
 // import { GridstackModule } from './gridstack.module';
 // import { GridstackComponent } from './gridstack.component';
 import { GridstackModule, GridstackComponent } from 'gridstack/dist/angular';
+import { ChangingDataProviderBugComponent } from './bug/changing-data-provider-bug/changing-data-provider-bug.component';
+import { WidgetComponent } from './bug/widget/widget.component';
+import { GridComponent } from 'projects/demo/src/app/bug/grid/grid.component';
 
 @NgModule({
   imports: [
@@ -18,13 +21,16 @@ import { GridstackModule, GridstackComponent } from 'gridstack/dist/angular';
     GridstackModule,
   ],
   declarations: [
-      AngularNgForCmdTestComponent,
-      AngularNgForTestComponent,
-      AngularSimpleComponent,
-      AppComponent,
-      AComponent,
-      BComponent,
-      CComponent,
+    AngularNgForCmdTestComponent,
+    AngularNgForTestComponent,
+    AngularSimpleComponent,
+    AppComponent,
+    AComponent,
+    BComponent,
+    CComponent,
+    ChangingDataProviderBugComponent,
+    WidgetComponent,
+    GridComponent,
   ],
   exports: [
   ],

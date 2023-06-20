@@ -1,0 +1,9 @@
+<button (click)="moveItemDown()">move item down</button>
+<button (click)="moveItemUp()">move item up</button>
+<span>setting only the providers works (the buttons), now drag an item to the other grid.
+  We immediately update the items of each grid to keep the model in sync with the view. But that breaks.</span>
+
+<div class="grids-container">
+  <app-grid (updateItem)="updateItem($event)" [gridId]="1" [items]="gridItems1"></app-grid>
+  <app-grid (updateItem)="updateItem($event)" [gridId]="2" [items]="gridItems2"></app-grid>
+</div>

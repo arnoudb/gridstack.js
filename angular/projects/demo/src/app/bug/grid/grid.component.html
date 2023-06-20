@@ -1,0 +1,17 @@
+<gridstack
+  [options]="GRID_OPTIONS"
+  (removedCB)="onRemovedCB($event)"
+  (addedCB)="onAddedCB($event)"
+  (droppedCB)="onDropped($event)"
+  (dragStartCB)="onDragStartCB($event)"
+  (dragStopCB)="onDragStopCB($event)">
+
+  <gridstack-item
+    *ngFor="let item of items; trackBy: trackWidget"
+    [options]="item.widgetLayout"
+    (click)="mouseClickGridItem(item.widgetConfig)">
+
+    <app-widget [widget]="item.widgetConfig"></app-widget>
+
+  </gridstack-item>
+</gridstack>
