@@ -226,7 +226,7 @@ export class Utils {
         h = parseFloat(match[1]);
       }
     } else {
-      h = val;
+      h = <number>val;
     }
     return { h, unit };
   }

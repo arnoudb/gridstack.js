@@ -6,7 +6,9 @@ import { AngularNgForCmdTestComponent } from './ngFor_cmd';
 
 // NOTE: local testing of file
 // import { GridstackComponent, NgGridStackOptions, NgGridStackWidget, elementCB, gsCreateNgComponents, nodesCB } from './gridstack.component';
-import { GridstackComponent, NgGridStackOptions, NgGridStackWidget, elementCB, gsCreateNgComponents, nodesCB } from 'gridstack/dist/angular';
+import {
+  GridstackComponent, NgGridStackOptions, NgGridStackWidget, elementCB, gsCreateNgComponents, nodesCB,droppedCB
+} from 'gridstack/dist/angular';
 
 // unique ids sets for each item for correct ngFor updating
 let ids = 1;
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit {
   @ViewChild('textArea', {static: true}) textEl?: ElementRef<HTMLTextAreaElement>;
 
   // which sample to show
-  public show = 5;
+  public show = 8;
 
   /** sample grid options and items to load... */
   public items: GridStackWidget[] = [
@@ -113,7 +115,7 @@ export class AppComponent implements OnInit {
     this.show = val;
 
     // set globally our method to create the right widget type
-    if (val < 3) GridStack.addRemoveCB = undefined;
+    if (val < 3 || val === 8) GridStack.addRemoveCB = undefined;
     else GridStack.addRemoveCB = gsCreateNgComponents;
 
     // let the switch take affect then load the starting values (since we sometimes save())
@@ -219,5 +221,32 @@ export class AppComponent implements OnInit {
   // ngFor TEMPLATE unique node id to have correct match between our items used and GS
   public identify(index: number, w: GridStackWidget) {
     return w.id; // or use index if no id is set and you only modify at the end...
+  }
+
+
+  // demo 8 code
+  protected demo8GridOpt1: NgGridStackOptions = {
+    column: 6,
+    cellHeight: 50,
+    margin: 5,
+    minRow: 1, // don't collapse when empty
+    disableOneColumnMode: true,
+    acceptWidgets: true,
+  };
+
+  protected demo8GridOpt2: NgGridStackOptions = { ...this.demo8GridOpt1 };
+
+  protected demo8GridElements1:GridStackWidget[] = [
+    {id:'id_1', x: 0, y: 0, w: 2, h: 2, content: '1'},
+    {id:'id_2', x: 3, y: 1, h: 2, content: '2'},
+    {id:'id_3', x: 4, y: 1, content: '3' },
+    {id:'id_4', x: 2, y: 3, w: 3, maxW: 3, content: '4: has maxW=3'}
+  ];
+
+  protected demo8GridElements2:GridStackWidget[] = [ { id:'id_5', x: 4, y: 1, content: '5' },];
+
+  // drop item from left to right grid
+  protected demo8DroppedCB(event: droppedCB):void {
+    this.demo8GridElements1 = [];
   }
 }
